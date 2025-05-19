@@ -3,6 +3,7 @@ import Description from './Description';
 import Options from './Options';
 import './App.css';
 import Feedback from './Feedback';
+import Notification from './Notification';
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
@@ -29,7 +30,7 @@ const App = () => {
 
   const positiveFeedback =
     feedback.good + feedback.bad > 0
-      ? Math.round((feedback.good / (feedback.good + feedback.bad)) * 100)
+      ? Math.round((feedback.good / totalFeedback) * 100)
       : 0;
 
   return (
@@ -49,7 +50,7 @@ const App = () => {
           total={totalFeedback}
           positive={positiveFeedback}
         />
-      ): "No feedback yet"}
+      ): Notification()}
     </div>
   );
 };
